@@ -184,12 +184,15 @@ let knownIds = new Set();
 let isFirst  = true;
 
 // ── CONFIG ────────────────────────────────────────────────────
+const DEFAULT_SHEET_URL   = 'https://script.google.com/macros/s/AKfycbxLjst6BLVfeoDVseNuliU_GMtHCqBQ5RxwqkxU67w-cnACYWXAsdKOduiET_RkduIzlw/exec';
+const DEFAULT_BACKEND_URL = 'https://jobtracker-tarunrn.onrender.com';
+
 function saveConfig() {
   localStorage.setItem(SHEET_URL_KEY,   document.getElementById('sheet-url').value.trim());
   localStorage.setItem(BACKEND_URL_KEY, document.getElementById('backend-url').value.trim());
 }
-function getSheetUrl()   { return localStorage.getItem(SHEET_URL_KEY)   || ''; }
-function getBackendUrl() { return localStorage.getItem(BACKEND_URL_KEY) || ''; }
+function getSheetUrl()   { return localStorage.getItem(SHEET_URL_KEY)   || DEFAULT_SHEET_URL; }
+function getBackendUrl() { return localStorage.getItem(BACKEND_URL_KEY) || DEFAULT_BACKEND_URL; }
 
 // ── FETCH ROWS FROM SHEET ─────────────────────────────────────
 async function fetchRows() {
