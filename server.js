@@ -3,7 +3,10 @@ const cors = require("cors");
 const Anthropic = require("@anthropic-ai/sdk");
 
 const app = express();
-app.use(cors());
+app.use(cors({
+  origin: ["https://tarunrn.github.io", "http://localhost:5500", "http://127.0.0.1:5500"],
+  methods: ["GET", "POST"],
+}));
 app.use(express.json({ limit: "20mb" }));
 
 const client = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
